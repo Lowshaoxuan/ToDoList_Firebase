@@ -1,14 +1,85 @@
-h1 {
-  color: #00ffaacf;
-  padding: 2rem;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(#eeaeca, #94bbe9);
+}
+
+.grid_container {
+  display: grid;
+  grid-template-columns: max-content auto; /* 2 columns: left = H1, right = input */
+  grid-template-rows: auto auto; /* 2 rows: hint row + content row */
+  grid-template-areas:
+    ". hint"
+    "welcome_title welcome_input";
+  gap: 8px 12px; /* row gap | column gap */
+  align-items: center; /* vertical alignment */
+}
+
+/* Assign areas */
+.welcome_title {
+  grid-area: welcome_title;
+}
+
+#input {
+  grid-area: welcome_input;
+}
+
+#hint {
+  position: relative;
+  grid-area: hint;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  width: fit-content;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#hint::after {
+  content: "";
+  position: absolute;
+  /* Positioning the pointer on the bottom center */
+  bottom: -10px; /* Half the size of the triangle border width */
+  left: 30%;
+  transform: translateX(-50%);
+
+  /* Creating the triangle using borders */
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white; /* Matches the dialog box border color */
+  border-bottom: 0;
+}
+
+/* Input and H1 styling */
+.welcome_title {
   font-size: 2rem;
-  border: 2px dotted red;
+  margin: 0;
 }
 
-main {
-  font-size: 2em;
+.welcome_input {
+  font-size: 2rem; /* same as H1 */
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  background-color: transparent;
+  padding: 4px 6px;
+  width: 20ch;
 }
 
-p {
-  font-size: 10rem;
+.welcome_input:focus {
+  outline: none; /* removes the default blue focus outline in browsers */
 }
