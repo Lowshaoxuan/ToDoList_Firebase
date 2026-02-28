@@ -1,0 +1,14 @@
+h1 {
+  color: #00ffaacf;
+  padding: 2rem;
+  font-size: 2rem;
+  border: 2px dotted red;
+}
+
+main {
+  font-size: 2em;
+}
+
+p {
+  font-size: 10rem;
+}
